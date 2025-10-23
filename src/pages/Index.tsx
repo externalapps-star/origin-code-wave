@@ -1,12 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from 'react';
+import Navigation from '@/components/Navigation';
+import FloatingMenu from '@/components/FloatingMenu';
+import FloatingDownloadCTA from '@/components/FloatingDownloadCTA';
+import HeroSection from '@/components/HeroSection';
+import WhyBossWorks from '@/components/WhyBossWorks';
+import FeaturesSection from '@/components/FeaturesSection';
+import GlobalSolutionsSection from '@/components/GlobalSolutionsSection';
+import SuccessStoriesSection from '@/components/SuccessStoriesSection';
+import FAQSection from '@/components/FAQSection';
+import BlogSection from '@/components/BlogSection';
+import FinalCTASection from '@/components/FinalCTASection';
+import Footer from '@/components/Footer';
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background bg-blue-500">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold text-foreground">Welcome to Your Blank App</h1>
-        <p className="text-xl text-foreground/80">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation onMenuToggle={() => setIsMenuOpen(true)} />
+      <FloatingMenu 
+        isOpen={isMenuOpen} 
+        onClose={() => setIsMenuOpen(false)}
+        onOpen={() => setIsMenuOpen(true)}
+      />
+      <FloatingDownloadCTA />
+      
+      <main>
+        <HeroSection />
+        <WhyBossWorks />
+        <FeaturesSection />
+        <GlobalSolutionsSection />
+        <SuccessStoriesSection />
+        <FAQSection />
+        {/* <BlogSection /> */}
+        <FinalCTASection />
+      </main>
+      
+      <Footer />
     </div>
   );
 };
