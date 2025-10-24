@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, UserPlus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import appStoreBadge from '@/assets/app-store-badge.png';
 import googlePlayBadge from '@/assets/google-play-badge.png';
@@ -120,8 +120,9 @@ const FinalCTASection = () => {
                     onClick={handleSubscribe}
                     disabled={isSubmitting}
                     size="lg"
-                    className="bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:scale-[1.02] transition-all duration-300 flex-shrink-0 w-36 md:w-auto mx-auto md:mx-0 h-11 md:h-auto disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:scale-[1.02] transition-all duration-300 flex-shrink-0 w-44 md:w-auto mx-auto md:mx-0 h-11 md:h-auto disabled:opacity-50 disabled:cursor-not-allowed px-4"
                   >
+                    <UserPlus className="w-4 h-4 mr-2" />
                     {isSubmitting ? "Joining..." : "Join the Waitlist"}
                   </Button>
                 </div>

@@ -80,7 +80,7 @@ const FAQSection = () => {
     {
       category: 'support',
       question: "Is Boss Works suitable for international entrepreneurs?",
-      answer: "Absolutely. Boss Works is designed as a global platform that customizes business plans and guidance based on your location and target market. While our service provider network and funding database are most comprehensive in India currently, we're rapidly expanding to serve entrepreneurs worldwide.",
+      answer: "Absolutely. Boss Works is designed as a global platform that customizes business plans and guidance based on your location and target market. Our AI adapts to local regulations, market conditions, and cultural considerations, providing relevant insights no matter where you're launching your business.",
       icon: Globe
     },
     {
