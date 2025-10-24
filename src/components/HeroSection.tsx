@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Download } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const HeroSection = () => {
@@ -56,10 +56,10 @@ const HeroSection = () => {
               <Button 
                 size="lg" 
                 className="bg-gradient-to-r from-primary to-accent text-white hover:opacity-90 font-semibold px-8 py-4 text-lg h-auto transition-all duration-300"
-                onClick={() => document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })}
+                onClick={() => document.getElementById('join-the-waitlist')?.scrollIntoView({ behavior: 'smooth' })}
               >
-                <Download className="w-5 h-5 mr-2" />
-                Download Now
+                <UserPlus className="w-5 h-5 mr-2" />
+                Join the Waitlist
               </Button>
             </div>
           </div>
