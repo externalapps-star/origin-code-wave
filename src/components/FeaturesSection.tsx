@@ -9,6 +9,12 @@ const FeaturesSection = () => {
       benefits: ["Market analysis & research", "Financial projections", "Risk assessment", "Growth strategies"]
     },
     {
+      emoji: <img src="/lovable-uploads/bag-of-money.png" alt="" className="w-full h-full object-contain" />,
+      title: "Funding & Grants Assistance",
+      description: "Find and secure the right funding for your business or nonprofit with our intelligent tools. Get matched with federal, state, and private grants, receive expert proposal support, and track your progress—all in one place.",
+      benefits: ["Smart grant discovery & matching", "Eligibility & compliance guidance", "Proposal and budget assistance", "Application tracking & support"]
+    },
+    {
       emoji: <img src="/lovable-uploads/wrench-3d.png" alt="" className="w-full h-full object-contain" />,
       title: "Specialist AI Agents",
       description: "Deploy your digital workforce of AI specialists trained for specific business tasks. Need market research for your restaurant location? Want competitor analysis for your retail store? Our AI agents handle the routine work so you can focus on what matters most.",
@@ -31,12 +37,6 @@ const FeaturesSection = () => {
       title: "Executive Dashboards",
       description: "Transform complexity into clarity with comprehensive analytics and reporting. Monitor your progress, track milestones, and make informed decisions with data-driven insights designed for business launches.",
       benefits: ["Business metrics", "Financial overview", "Market insights", "Growth indicators"]
-    },
-    {
-      emoji: <img src="/lovable-uploads/document-3d.png" alt="" className="w-full h-full object-contain" />,
-      title: "Learning & Support Library",
-      description: "Access thousands of practical lessons from successful entrepreneurs, expert tutorials, and step-by-step guides. Get the right knowledge precisely when you need it, plus connections to trusted service providers and advisors.",
-      benefits: ["Video courses", "Interactive guides", "Expert interviews", "Community forums"]
     }
   ];
 
