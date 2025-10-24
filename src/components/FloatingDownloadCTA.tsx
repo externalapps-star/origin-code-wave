@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Download } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import appStoreBadge from '@/assets/app-store-badge.png';
 import googlePlayBadge from '@/assets/google-play-badge.png';
@@ -19,9 +19,8 @@ const FloatingDownloadCTA = () => {
         <Button size="lg" className="bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 font-semibold px-4 sm:px-6 py-2.5 sm:py-3 h-auto shadow-xl rounded-full transition-all hover:scale-105 hover:shadow-2xl text-sm sm:text-base whitespace-nowrap" onClick={() => document.getElementById('join-the-waitlist')?.scrollIntoView({
         behavior: 'smooth'
       })}>
-          {/* <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" /> */}
-          <span className="hidden xs:inline">Join the Waitlist</span>
-          <span className="xs:hidden">Join the Waitlist</span>
+          <UserPlus className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+          <span>Join the Waitlist</span>
         </Button>
         
         {/* Hover Dropdown with Store Badges - Hidden for now */}
