@@ -21,16 +21,16 @@ const FeaturesSection = () => {
       benefits: ["Marketing expert AI", "Finance advisor AI", "Legal consultant AI", "Operations specialist AI"]
     },
     {
-      emoji: <img src="/lovable-uploads/growth-chart-3d.png" alt="" className="w-full h-full object-contain" />,
-      title: "Smart Progress Tracking",
-      description: "Never lose momentum with our intelligent daily tracker. See exactly what needs to be done today, understand task dependencies, and receive gentle nudges to keep your business launch on schedule.",
-      benefits: ["Real-time dashboards", "Milestone tracking", "Performance analytics", "Progress insights"]
-    },
-    {
       emoji: <img src="/lovable-uploads/cloth-store-3d.png" alt="" className="w-full h-full object-contain" />,
       title: "AI Business Mentor",
       description: "Get instant answers from BB AI, your 24/7 business mentor trained on specialized knowledge across hundreds of business types. From regulatory questions to marketing strategies, get expert guidance whenever you need it.",
       benefits: ["24/7 availability", "Personalized advice", "Strategic guidance", "Motivational support"]
+    },
+    {
+      emoji: <img src="/lovable-uploads/growth-chart-3d.png" alt="" className="w-full h-full object-contain" />,
+      title: "Smart Progress Tracking",
+      description: "Never lose momentum with our intelligent daily tracker. See exactly what needs to be done today, understand task dependencies, and receive gentle nudges to keep your business launch on schedule.",
+      benefits: ["Real-time dashboards", "Milestone tracking", "Performance analytics", "Progress insights"]
     },
     {
       emoji: <img src="/lovable-uploads/laptop-3d.png" alt="" className="w-full h-full object-contain" />,
