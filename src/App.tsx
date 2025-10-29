@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "next-themes";
 import StoreProvider from "./redux/StoreProvider";
+import CookieConsent from "./components/CookieConsent";
 import Index from "./pages/Index";
 import AboutUs from "./pages/AboutUs";
 import NotFound from "./pages/NotFound";
@@ -13,6 +14,7 @@ import TermsOfUse from "./pages/TermsOfUse";
 import RefundPolicy from "./pages/RefundPolicy";
 import AccountPreferences from "./pages/account-preferences/AccountPreferences";
 import DataProcessingAddendum from "./pages/DataProcessingAddendum";
+import CookieSettings from "./pages/CookieSettings";
 
 const queryClient = new QueryClient();
 
@@ -37,10 +39,12 @@ const App = () => (
               <Route path="/refund-policy" element={<RefundPolicy />} />
               <Route path="/account-preferences" element={<AccountPreferences />} />
               <Route path="/data-processing-addendum" element={<DataProcessingAddendum />} />
+              <Route path="/cookie-settings" element={<CookieSettings />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
           </BrowserRouter>
+          <CookieConsent />
         </TooltipProvider>
       </ThemeProvider>
     </QueryClientProvider>

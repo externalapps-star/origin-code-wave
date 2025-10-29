@@ -2,14 +2,36 @@ import { Calendar, Clock, ArrowRight, TrendingUp, Users, Lightbulb, CheckCircle 
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import useCookieConsent from '@/hooks/useCookieConsent';
 
 const BlogSection = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { hasConsentedTo } = useCookieConsent();
 
   const handleSubscribe = () => {
+    // Check consent before submitting to Google Apps Script
+    if (!hasConsentedTo('marketing')) {
+      toast({
+        title: "Consent Required",
+        description: "Please accept marketing cookies to subscribe to our newsletter.",
+        variant: "destructive",
+        action: (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => window.open('/cookie-settings', '_blank')}
+            className="ml-2 bg-background text-foreground border-border hover:bg-secondary hover:text-secondary-foreground"
+          >
+            Manage Cookies
+          </Button>
+        ),
+      });
+      return;
+    }
+    
     if (!email || !email.includes('@')) {
       toast({
         title: "Invalid Email",

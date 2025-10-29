@@ -39,6 +39,9 @@ const Footer = () => {
   }, {
     name: "Data Processing Addendum",
     href: "/data-processing-addendum"
+  }, {
+    name: "Cookie Settings",
+    href: "/cookie-settings"
   }];
   return <footer className="bg-gradient-dark text-primary-foreground">
       

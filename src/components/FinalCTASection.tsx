@@ -4,14 +4,36 @@ import { CheckCircle, UserPlus } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import appStoreBadge from '@/assets/app-store-badge.png';
 import googlePlayBadge from '@/assets/google-play-badge.png';
+import useCookieConsent from '@/hooks/useCookieConsent';
 
 const FinalCTASection = () => {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
+  const { hasConsentedTo } = useCookieConsent();
 
   const handleSubscribe = () => {
+    // Check consent before submitting to Google Apps Script
+    if (!hasConsentedTo('marketing')) {
+      toast({
+        title: "Consent Required",
+        description: "Please accept marketing cookies to join the waitlist.",
+        variant: "destructive",
+        action: (
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => window.open('/cookie-settings', '_blank')}
+            className="ml-2 bg-background text-foreground border-border hover:bg-secondary hover:text-secondary-foreground"
+          >
+            Manage Cookies
+          </Button>
+        ),
+      });
+      return;
+    }
+
     if (!email || !email.includes('@')) {
       toast({
         title: "Invalid Email",
