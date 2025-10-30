@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Settings, X, Shield, BarChart3, Target, User } from 'lucide-react';
+import { Settings, X, Shield } from 'lucide-react';
 import { 
-  getCookieConsent, 
   acceptAllCookies, 
   rejectAllCookies, 
-  hasConsented,
-  getCookieCategories 
+  hasConsented
 } from '@/lib/cookie-utils';
 import CookieSettingsModal from './CookieSettingsModal';
 
@@ -55,8 +52,6 @@ const CookieConsent: React.FC = () => {
 
   if (!showBanner) return null;
 
-  const categories = getCookieCategories();
-
   return (
     <>
       {/* Backdrop */}
@@ -73,19 +68,19 @@ const CookieConsent: React.FC = () => {
         }`}
       >
         <div className="bg-background border-t shadow-2xl">
-          <div className="max-w-7xl mx-auto p-4 sm:p-6">
+          <div className="max-w-6xl mx-auto p-4">
             <Card className="border-0 shadow-none">
-              <CardHeader className="pb-4">
+              <CardHeader className="pb-3">
                 <div className="flex items-start justify-between">
                   <div className="flex items-center gap-3">
                     <div className="p-2 bg-primary/10 rounded-lg">
-                      <Shield className="h-6 w-6 text-primary" />
+                      <Shield className="h-5 w-5 text-primary" />
                     </div>
                     <div>
                       <CardTitle className="text-lg font-semibold">
                         We Value Your Privacy
                       </CardTitle>
-                      <CardDescription className="text-sm text-muted-foreground mt-1">
+                      <CardDescription className="text-sm text-muted-foreground">
                         We use cookies to enhance your experience and analyze our traffic.
                       </CardDescription>
                     </div>
@@ -103,24 +98,8 @@ const CookieConsent: React.FC = () => {
               
               <CardContent className="pt-0">
                 <div className="space-y-4">
-                  {/* Cookie Categories Overview */}
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                    {Object.entries(categories).map(([key, category]) => (
-                      <div key={key} className="flex items-center gap-2 text-xs">
-                        <div className="flex items-center gap-1">
-                          {key === 'necessary' && <Shield className="h-3 w-3 text-green-600" />}
-                          {key === 'functional' && <User className="h-3 w-3 text-blue-600" />}
-                          {key === 'analytics' && <BarChart3 className="h-3 w-3 text-purple-600" />}
-                          {key === 'marketing' && <Target className="h-3 w-3 text-orange-600" />}
-                          {key === 'preferences' && <Settings className="h-3 w-3 text-pink-600" />}
-                        </div>
-                        <span className="text-muted-foreground">{category.name}</span>
-                      </div>
-                    ))}
-                  </div>
-
                   {/* Legal Notice */}
-                  <div className="text-xs text-muted-foreground bg-muted/50 p-3 rounded-lg">
+                  <div className="text-xs text-muted-foreground">
                     <p>
                       By clicking "Accept All", you consent to our use of cookies. 
                       You can customize your preferences or learn more in our{' '}

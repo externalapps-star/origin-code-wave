@@ -137,45 +137,43 @@ const CookieSettings: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-4xl mx-auto p-6">
+      <div className="max-w-5xl mx-auto p-4">
         {/* Header */}
-        <div className="mb-8">  
+        <div className="mb-4">  
           {/* Home Button */}
           <Button
             variant="ghost"
             onClick={() => navigate('/')}
-            className="mb-6 flex items-center gap-2"
+            className="mb-3 flex items-center gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
             Home
           </Button>
           
-          <div className="flex items-center gap-3 mb-2">
+          <div className="flex items-center gap-3">
             <div className="p-2 bg-primary/10 rounded-lg">
-              <Settings className="h-6 w-6 text-primary" />
+              <Settings className="h-5 w-5 text-primary" />
             </div>
             <div>
-              <h1 className="text-3xl font-bold">Cookie Settings</h1>
-              <p className="text-muted-foreground">
+              <h1 className="text-2xl font-bold">Cookie Settings</h1>
+              <p className="text-sm text-muted-foreground">
                 Manage your cookie preferences and privacy settings
               </p>
             </div>
           </div>
         </div>
 
-        {/* Current Status */}
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <Info className="h-5 w-5" />
-              Current Cookie Status
+        {/* Combined Status and Actions */}
+        <Card className="mb-4">
+          <CardHeader className="pb-3">
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <Info className="h-4 w-4" />
+              Current Status & Quick Actions
             </CardTitle>
-            <CardDescription>
-              Here's what cookies are currently enabled on your device
-            </CardDescription>
           </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <CardContent className="space-y-4">
+            {/* Current Status - Compact Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-2">
               {Object.entries(categories).map(([key, category]) => {
                 const categoryKey = key as CookieCategory;
                 const isEnabled = preferences[categoryKey];
@@ -184,76 +182,66 @@ const CookieSettings: React.FC = () => {
                 return (
                   <div
                     key={categoryKey}
-                    className={`p-4 rounded-lg border flex items-center gap-3 ${
+                    className={`p-2 rounded-lg border flex items-center gap-2 ${
                       isEnabled ? 'bg-green-50 border-green-200' : 'bg-gray-50 border-gray-200'
                     }`}
                   >
                     <div className={info.color}>
                       {info.icon}
                     </div>
-                    <div className="flex-1">
-                      <div className="font-medium text-sm">{category.name}</div>
+                    <div className="flex-1 min-w-0">
+                      <div className="font-medium text-xs truncate">{category.name}</div>
                       <Badge 
                         variant={isEnabled ? "default" : "secondary"}
-                        className="text-xs mt-1"
+                        className="text-xs"
                       >
-                        {isEnabled ? 'Enabled' : 'Disabled'}
+                        {isEnabled ? 'On' : 'Off'}
                       </Badge>
                     </div>
                   </div>
                 );
               })}
             </div>
-          </CardContent>
-        </Card>
 
-        {/* Quick Actions */}
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle>Quick Actions</CardTitle>
-            <CardDescription>
-              Quickly manage your cookie preferences with these options
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="flex flex-col sm:flex-row gap-3">
+            {/* Quick Actions - Compact */}
+            <div className="flex flex-col sm:flex-row gap-2">
               <Button
                 onClick={handleAcceptAll}
-                className="flex-1"
+                size="sm"
+                className="flex-1 py-3 sm:py-2"
               >
-                <CheckCircle className="h-4 w-4 mr-2" />
-                Accept All Cookies
+                <CheckCircle className="h-3 w-3 mr-1" />
+                Accept All
               </Button>
               <Button
                 onClick={handleRejectAll}
                 variant="outline"
-                className="flex-1"
+                size="sm"
+                className="flex-1 py-3 sm:py-2"
               >
-                <XCircle className="h-4 w-4 mr-2" />
-                Reject All Non-Essential
+                <XCircle className="h-3 w-3 mr-1" />
+                Reject All
               </Button>
               <Button
                 onClick={() => setShowModal(true)}
                 variant="outline"
-                className="flex-1"
+                size="sm"
+                className="flex-1 py-3 sm:py-2"
               >
-                <Settings className="h-4 w-4 mr-2" />
-                Customize Settings
+                <Settings className="h-3 w-3 mr-1" />
+                Customize
               </Button>
             </div>
           </CardContent>
         </Card>
 
-        {/* Detailed Information */}
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle>Cookie Information</CardTitle>
-            <CardDescription>
-              Learn more about each type of cookie we use
-            </CardDescription>
+        {/* Detailed Information - Compact Grid */}
+        <Card className="mb-4">
+          <CardHeader className="pb-3">
+            <CardTitle className="text-lg">Cookie Information</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               {Object.entries(categories).map(([key, category]) => {
                 const categoryKey = key as CookieCategory;
                 const info = cookieInfo[categoryKey];
@@ -261,21 +249,21 @@ const CookieSettings: React.FC = () => {
                 const isNecessary = categoryKey === 'necessary';
                 
                 return (
-                  <div key={categoryKey}>
-                    <div className="flex items-start gap-4">
-                      <div className={`p-2 rounded-lg ${isEnabled ? 'bg-green-100' : 'bg-gray-100'}`}>
+                  <div key={categoryKey} className="p-3 rounded-lg border">
+                    <div className="flex items-start gap-3">
+                      <div className={`p-1.5 rounded ${isEnabled ? 'bg-green-100' : 'bg-gray-100'}`}>
                         <div className={info.color}>
                           {info.icon}
                         </div>
                       </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h3 className="font-semibold">{category.name}</h3>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <h3 className="font-semibold text-sm">{category.name}</h3>
                           <Badge 
                             variant={isEnabled ? "default" : "secondary"}
                             className="text-xs"
                           >
-                            {isEnabled ? 'Enabled' : 'Disabled'}
+                            {isEnabled ? 'On' : 'Off'}
                           </Badge>
                           {isNecessary && (
                             <Badge variant="outline" className="text-xs">
@@ -283,20 +271,19 @@ const CookieSettings: React.FC = () => {
                             </Badge>
                           )}
                         </div>
-                        <p className="text-sm text-muted-foreground mb-3">
+                        <p className="text-xs text-muted-foreground mb-2">
                           {category.description}
                         </p>
-                        <div className="space-y-1">
+                        <div className="flex flex-wrap gap-x-2 gap-y-0.5">
                           {info.details.map((detail, index) => (
-                            <div key={index} className="flex items-center gap-2 text-sm text-muted-foreground">
-                              <div className="w-1 h-1 bg-muted-foreground rounded-full" />
-                              {detail}
+                            <div key={index} className="flex items-center gap-1 text-xs text-muted-foreground">
+                              <div className="w-1 h-1 bg-muted-foreground rounded-full flex-shrink-0" />
+                              <span>{detail}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                     </div>
-                    {key !== 'preferences' && <Separator className="mt-6" />}
                   </div>
                 );
               })}
@@ -304,13 +291,13 @@ const CookieSettings: React.FC = () => {
           </CardContent>
         </Card>
 
-        {/* Legal Information */}
+        {/* Legal Information - Compact */}
         <Card>
-          <CardHeader>
-            <CardTitle>Your Privacy Rights</CardTitle>
+          <CardHeader className="pb-3">
+            <CardTitle className="text-lg">Privacy Rights</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="space-y-4 text-sm text-muted-foreground">
+            <div className="space-y-3 text-sm text-muted-foreground">
               <p>
                 <strong>Right to Withdraw Consent:</strong> You can withdraw your consent to 
                 non-essential cookies at any time by updating your preferences on this page.
@@ -330,6 +317,7 @@ const CookieSettings: React.FC = () => {
                   onClick={handleClearAll}
                   variant="destructive"
                   size="sm"
+                  className="flex-1 py-3 sm:py-2"
                 >
                   Clear All Preferences
                 </Button>
@@ -337,6 +325,7 @@ const CookieSettings: React.FC = () => {
                   asChild
                   variant="outline"
                   size="sm"
+                  className="flex-1 py-3 sm:py-2"
                 >
                   <Link to="/privacy-policy">
                     View Privacy Policy
