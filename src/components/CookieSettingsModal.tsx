@@ -29,7 +29,7 @@ import {
   defaultPreferences 
 } from '@/lib/cookie-utils';
 import { CookiePreferences, CookieCategory } from '@/types/cookie';
-
+import { Link } from 'react-router-dom';
 interface CookieSettingsModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -267,9 +267,9 @@ const CookieSettingsModal: React.FC<CookieSettingsModalProps> = ({
                 <p>
                   <strong>More Information:</strong> For detailed information about how we use cookies, 
                   please read our{' '}
-                  <a href="/privacy-policy" className="text-primary hover:underline">
+                  <Link to="/privacy-policy" className="text-primary hover:underline">
                     Privacy Policy
-                  </a>
+                  </Link>
                   .
                 </p>
               </div>

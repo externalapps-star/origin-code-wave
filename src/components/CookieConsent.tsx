@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Settings, X, Shield } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { 
   acceptAllCookies, 
   rejectAllCookies, 
@@ -103,13 +104,13 @@ const CookieConsent: React.FC = () => {
                     <p>
                       By clicking "Accept All", you consent to our use of cookies. 
                       You can customize your preferences or learn more in our{' '}
-                      <a href="/privacy-policy" className="text-primary hover:underline">
+                      <Link to="/privacy-policy" className="text-primary hover:underline">
                         Privacy Policy
-                      </a>
+                      </Link>
                       {' '}and{' '}
-                      <a href="/terms-of-use" className="text-primary hover:underline">
+                      <Link to="/terms-of-use" className="text-primary hover:underline">
                         Terms of Use
-                      </a>
+                      </Link>
                       .
                     </p>
                   </div>
